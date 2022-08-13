@@ -48,3 +48,4 @@ Handy Links
 
 * `AoC <https://adventofcode.com/2015>`_
 * `Repo <https://github.com/tyler-hoffman/aoc-2015>`_
+* `CI <https://app.circleci.com/pipelines/github/tyler-hoffman/aoc-2015>`_
