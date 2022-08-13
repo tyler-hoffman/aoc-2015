@@ -1,5 +1,5 @@
 from __future__ import annotations
-from abc import ABC
+from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from typing import Sequence, Tuple
 
@@ -7,6 +7,15 @@ from typing import Sequence, Tuple
 @dataclass
 class Solver(ABC):
     boxes: Sequence[Box]
+
+    @property
+    def solution(self) -> int:
+        return sum((self.compute_amount(box) for box in self.boxes))
+
+    @abstractmethod
+    def compute_amount(self, box: Box) -> int:
+        ...
+
 
 @dataclass
 class Box:

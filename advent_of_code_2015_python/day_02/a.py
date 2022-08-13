@@ -3,9 +3,8 @@ from advent_of_code_2015_python.day_02.solver import Box, Solver
 
 
 class Day02PartASolver(Solver):
-    @property
-    def solution(self) -> int:
-        return sum((self.compute_wrapping_paper(box) for box in self.boxes))
+    def compute_amount(self, box: Box) -> int:
+        return self.compute_wrapping_paper(box)
 
     @staticmethod
     def compute_wrapping_paper(box: Box) -> int:
