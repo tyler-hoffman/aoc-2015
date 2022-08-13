@@ -10,6 +10,9 @@ class FileData(object):
     to be used when bootstrapping files
     """
 
+    src = "advent_of_code_2015_python"
+    tests = "tests"
+
     day: int
     part: Part
 
@@ -19,15 +22,15 @@ class FileData(object):
 
     @property
     def part_module(self) -> str:
-        return f"src.day_{self.day_string}.{self.part}"
+        return f"{self.src}.day_{self.day_string}.{self.part}"
 
     @property
     def directory(self) -> str:
-        return f"src/day_{self.day_string}"
+        return f"{self.src}/day_{self.day_string}"
 
     @property
     def test_directory(self) -> str:
-        return f"test/test_day_{self.day_string}"
+        return f"{self.tests}/test_day_{self.day_string}"
 
     @property
     def input_file(self) -> str:

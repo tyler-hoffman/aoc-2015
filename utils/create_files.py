@@ -4,11 +4,11 @@ import os
 import aocd
 
 from utils.file_data import FileData
-from utils.templates.parser import PARSER_TEMPLATE
-from utils.templates.part import PART_TEMPLATE
-from utils.templates.solver import SOLVER_TEMPLATE
-from utils.templates.test_data import TEST_DATA_TEMPLATE
-from utils.templates.test_part import TEST_PART_TEMPLATE
+from utils.templates.parser import create_parser_stub
+from utils.templates.part import create_part_stub
+from utils.templates.solver import create_solver_stub
+from utils.templates.test_data import create_test_data_stub
+from utils.templates.test_part import create_part_test_stub
 
 
 def touch_file(path: str) -> None:
@@ -25,38 +25,27 @@ def create_directories_if_needed(file_data: FileData) -> None:
         os.makedirs(file_data.directory)
         touch_file(file_data.src_init_file)
         write_file(file_data.input_file, aocd.get_data(year=2015, day=file_data.day))
-        write_file(
-            file_data.parser_file,
-            PARSER_TEMPLATE.format(day_string=file_data.day_string),
-        )
+        write_file(file_data.parser_file, create_parser_stub())
         write_file(
             file_data.solver_file,
-            SOLVER_TEMPLATE.format(day_string=file_data.day_string),
+            create_solver_stub(),
         )
 
     if not os.path.isdir(file_data.test_directory):
         os.makedirs(file_data.test_directory)
         touch_file(file_data.test_init_file)
-        write_file(file_data.test_data_file, TEST_DATA_TEMPLATE)
+        write_file(file_data.test_data_file, create_test_data_stub())
 
 
 def create_part_files(file_data: FileData) -> None:
     write_file(
         file_data.part_file,
-        PART_TEMPLATE.format(
-            day_string=file_data.day_string,
-            part=file_data.part,
-            part_upper=file_data.part.upper(),
-        ),
+        create_part_stub(day_string=file_data.day_string, part=file_data.part),
     )
 
     write_file(
         file_data.test_part_file,
-        TEST_PART_TEMPLATE.format(
-            day_string=file_data.day_string,
-            part=file_data.part,
-            part_upper=file_data.part.upper(),
-        ),
+        create_part_test_stub(day_string=file_data.day_string, part=file_data.part),
     )
 
 

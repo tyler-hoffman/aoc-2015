@@ -1,4 +1,8 @@
-PARSER_TEMPLATE = """
+def create_parser_stub() -> str:
+    return _PARSER_TEMPLATE
+
+
+_PARSER_TEMPLATE = """
 from typing import List
 
 
