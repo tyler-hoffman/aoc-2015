@@ -1,13 +1,14 @@
 import argparse
-import aocd
 import os
 
+import aocd
+
 from utils.file_data import FileData
-from utils.templates.part import PART_TEMPLATE
 from utils.templates.parser import PARSER_TEMPLATE
+from utils.templates.part import PART_TEMPLATE
 from utils.templates.solver import SOLVER_TEMPLATE
-from utils.templates.test_part import TEST_PART_TEMPLATE
 from utils.templates.test_data import TEST_DATA_TEMPLATE
+from utils.templates.test_part import TEST_PART_TEMPLATE
 
 
 def touch_file(path: str) -> None:

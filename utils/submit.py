@@ -1,7 +1,8 @@
-from typing import Literal, Union
-import aocd
 import argparse
 import subprocess
+from typing import Literal, Union
+
+import aocd
 
 from utils.file_data import FileData, Part
 

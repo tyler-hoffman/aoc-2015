@@ -1,6 +1,5 @@
 from typing import Any
 
-
 def submit(
     answer: str,
     part: str = None,
@@ -9,11 +8,7 @@ def submit(
     session: Any = None,
     reopen: bool = True,
     quiet: bool = False,
-) -> Any:
-    ...
-
-
+) -> Any: ...
 def get_data(
     session: Any = None, day: int = None, year: int = None, block: bool = False
-) -> str:
-    ...
+) -> str: ...
