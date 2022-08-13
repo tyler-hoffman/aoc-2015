@@ -24,10 +24,13 @@ def solve(input: str) -> int:
 
     return solver.solution
 
+def get_solution() -> int:
+    with open("advent_of_code_2015_python/day_{day_string}/input.txt", "r") as f:
+        input = f.read()
+    return solve(input)
+
 
 if __name__ == "__main__":
-    with open("src/day_{day_string}/input.txt", "r") as f:
-        input = f.read()
-        print(solve(input))
+    print(get_solution())
 
 """
