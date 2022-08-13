@@ -1,8 +1,18 @@
+from dataclasses import dataclass
+from typing import Sequence
+
+from advent_of_code_2015_python.day_02.models import Box
 from advent_of_code_2015_python.day_02.parser import Parser
-from advent_of_code_2015_python.day_02.solver import Box, Solver
 
 
-class Day02PartBSolver(Solver):
+@dataclass
+class Day02PartBSolver:
+    boxes: Sequence[Box]
+
+    @property
+    def solution(self) -> int:
+        return sum((self.compute_ribbon(box) for box in self.boxes))
+
     def compute_amount(self, box: Box) -> int:
         return self.compute_ribbon(box)
 

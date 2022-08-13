@@ -1,8 +1,13 @@
+from dataclasses import dataclass
+from typing import Sequence
+
 from advent_of_code_2015_python.day_01.parser import Parser
-from advent_of_code_2015_python.day_01.solver import Solver
 
 
-class Day01PartBSolver(Solver):
+@dataclass
+class Day01PartBSolver:
+    input: Sequence[str]
+
     @property
     def solution(self) -> int:
         floor = 0

@@ -1,6 +1,6 @@
 from typing import Sequence
 
-from advent_of_code_2015_python.day_02.solver import Box
+from advent_of_code_2015_python.day_02.models import Box
 
 
 class Parser(object):

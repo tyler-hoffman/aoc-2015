@@ -1,7 +1,6 @@
 import pytest
 
-from advent_of_code_2015_python.day_02.a import (Day02PartASolver,
-                                                 get_solution, solve)
+from advent_of_code_2015_python.day_02.a import Day02PartASolver, get_solution, solve
 from advent_of_code_2015_python.day_02.parser import Parser
 
 SAMPLE_INPUT = """

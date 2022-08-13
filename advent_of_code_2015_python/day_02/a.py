@@ -1,10 +1,17 @@
+from dataclasses import dataclass
+from typing import Sequence
+
+from advent_of_code_2015_python.day_02.models import Box
 from advent_of_code_2015_python.day_02.parser import Parser
-from advent_of_code_2015_python.day_02.solver import Box, Solver
 
 
-class Day02PartASolver(Solver):
-    def compute_amount(self, box: Box) -> int:
-        return self.compute_wrapping_paper(box)
+@dataclass
+class Day02PartASolver:
+    boxes: Sequence[Box]
+
+    @property
+    def solution(self) -> int:
+        return sum((self.compute_wrapping_paper(box) for box in self.boxes))
 
     @staticmethod
     def compute_wrapping_paper(box: Box) -> int:
