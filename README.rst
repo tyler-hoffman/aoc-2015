@@ -2,6 +2,9 @@
 advent of code 2015
 ===================
 
+.. image:: https://dl.circleci.com/status-badge/img/gh/tyler-hoffman/aoc-2015/tree/main.svg?style=svg
+        :target: https://dl.circleci.com/status-badge/redirect/gh/tyler-hoffman/aoc-2015/tree/main
+
 Python 3.10 edition
 
 Notes on the repo
