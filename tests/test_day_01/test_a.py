@@ -3,7 +3,6 @@ import pytest
 from advent_of_code_2015_python.day_01.a import get_solution, solve
 
 
-# class TestDay01A(unittest.TestCase):
 @pytest.mark.parametrize(
     "input, expected",
     [
