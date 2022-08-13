@@ -7,7 +7,6 @@ from utils.file_data import FileData
 from utils.templates.parser import create_parser_stub
 from utils.templates.part import create_part_stub
 from utils.templates.solver import create_solver_stub
-from utils.templates.test_data import create_test_data_stub
 from utils.templates.test_part import create_part_test_stub
 
 
@@ -34,7 +33,6 @@ def create_directories_if_needed(file_data: FileData) -> None:
     if not os.path.isdir(file_data.test_directory):
         os.makedirs(file_data.test_directory)
         touch_file(file_data.test_init_file)
-        write_file(file_data.test_data_file, create_test_data_stub())
 
 
 def create_part_files(file_data: FileData) -> None:

@@ -9,6 +9,6 @@ from dataclasses import dataclass
 
 @dataclass
 class Solver(ABC):
-    pass
+    ...
 
 """
