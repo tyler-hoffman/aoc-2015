@@ -9,10 +9,9 @@ def create_part_stub(day_string: str, part: str) -> str:
 
 _PART_TEMPLATE = """
 from {src}.day_{day_string}.parser import Parser
-from {src}.day_{day_string}.solver import Solver
 
 
-class Day{day_string}Part{part_upper}Solver(Solver):
+class Day{day_string}Part{part_upper}Solver:
     @property
     def solution(self) -> int:
         return -1
