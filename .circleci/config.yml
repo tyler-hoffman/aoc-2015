@@ -32,6 +32,16 @@ jobs:
       - run:
           name: Check formatting with black
           command: poetry run isort . --check
+  build-and-typecheck:
+    docker:
+      - image: cimg/python:3.10
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: poetry
+      - run:
+          name: Typecheck the dang thing
+          command: poetry run mypy .
 workflows:
   test:
     jobs:
@@ -40,3 +50,6 @@ workflows:
     jobs:
       - build-and-check-formatting
       - build-and-check-import-sorting
+  typecheck:
+    jobs:
+      - build-and-typecheck
