@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod, abstractproperty
 from dataclasses import dataclass
 from functools import cached_property
 from typing import Sequence
+
 from shared.models import DOWN, LEFT, RIGHT, UP, Point
 
 
