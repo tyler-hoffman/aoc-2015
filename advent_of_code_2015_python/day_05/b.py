@@ -1,22 +1,23 @@
 from dataclasses import dataclass
 from typing import Callable, Iterable, Mapping, Sequence, Tuple
+
 from advent_of_code_2015_python.day_05.parser import Parser
+from advent_of_code_2015_python.day_05.solver import Solver, sliding_window
 
 
 @dataclass
-class Day05PartBSolver:
+class Day05PartBSolver(Solver):
     strings: Sequence[str]
 
     @property
-    def solution(self) -> int:
-        nice_words = [word for word in self.strings if self.is_nice(word)]
-        return len(nice_words)
-
-    def is_nice(self, word: str) -> bool:
-        return all((rule(word) for rule in self.rules))
+    def rules(self) -> Iterable[Callable[[str], bool]]:
+        return [
+            self.has_sandwhich,
+            self.has_non_overlapping_matching_double_chard,
+        ]
 
     def has_sandwhich(self, word: str) -> bool:
-        for a, _, b in self.triples(word):
+        for a, _, b in sliding_window(word, 3):
             if a == b:
                 return True
         return False
@@ -32,27 +33,13 @@ class Day05PartBSolver:
     def pairs_to_indicies(self, word: str) -> Mapping[Tuple[str, str], list[int]]:
         output: dict[Tuple[str, str], list[int]] = dict()
 
-        for i, double in enumerate(self.doubles(word)):
-            if double not in output:
-                output[double] = []
-            output[double].append(i)
+        for i, (a, b) in enumerate(sliding_window(word, 2)):
+            key = (a, b)
+            if key not in output:
+                output[key] = []
+            output[key].append(i)
 
         return output
-
-    def doubles(self, word: str) -> Iterable[Tuple[str, str]]:
-        for i in range(len(word) - 1):
-            yield word[i], word[i + 1]
-
-    def triples(self, word: str) -> Iterable[Tuple[str, str, str]]:
-        for i in range(len(word) - 2):
-            yield word[i], word[i + 1], word[i + 2]
-
-    @property
-    def rules(self) -> Callable[[str], bool]:
-        return [
-            self.has_sandwhich,
-            self.has_non_overlapping_matching_double_chard,
-        ]
 
 
 def solve(input: str) -> int:
