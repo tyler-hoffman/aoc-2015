@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+
 from advent_of_code_2015_python.day_04.parser import Parser
 from advent_of_code_2015_python.day_04.solver import Solver
 
