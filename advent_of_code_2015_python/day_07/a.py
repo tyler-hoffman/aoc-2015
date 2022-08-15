@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from functools import cache, cached_property
 from typing import Mapping, Sequence, Union
 
@@ -52,8 +52,7 @@ class Day07PartASolver:
 
 
 def solve(input: str) -> int:
-    parser = Parser()
-    gates = tuple(parser.parse(input))
+    gates = tuple(Parser.parse(input))
     solver = Day07PartASolver(gates)
 
     return solver.solution
