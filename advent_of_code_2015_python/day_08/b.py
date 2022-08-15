@@ -16,20 +16,15 @@ class Day08PartBSolver:
         return self.get_respresentation_count(line) - len(line)
 
     def get_respresentation_count(self, line: str) -> int:
-        length = len(line)
         count = 2
-        index = 0
-        while index < length:
-            match line[index]:
+        for char in line:
+            match char:
                 case '"':
                     count += 2
-                    index += 1
                 case "\\":
                     count += 2
-                    index += 1
                 case _:
                     count += 1
-                    index += 1
         return count
 
 
