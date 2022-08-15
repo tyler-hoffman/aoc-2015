@@ -18,8 +18,8 @@ class Day{day_string}Part{part_upper}Solver:
 
 
 def solve(input: str) -> int:
-    parser = Parser()
-    solver = Day{day_string}Part{part_upper}Solver(parser.parse(input))
+    data = Parser.parse(input)
+    solver = Day{day_string}Part{part_upper}Solver(data)
 
     return solver.solution
 

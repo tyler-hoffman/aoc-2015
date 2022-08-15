@@ -10,8 +10,7 @@ class Day04PartBSolver(Solver):
 
 
 def solve(input: str) -> int:
-    parser = Parser()
-    solver = Day04PartBSolver(parser.parse(input))
+    solver = Day04PartBSolver(Parser.parse(input))
 
     return solver.solution
 

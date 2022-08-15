@@ -39,8 +39,7 @@ class Day05PartASolver(Solver):
 
 
 def solve(input: str) -> int:
-    parser = Parser()
-    solver = Day05PartASolver(parser.parse(input))
+    solver = Day05PartASolver(Parser.parse(input))
 
     return solver.solution
 

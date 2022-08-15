@@ -25,8 +25,7 @@ class Day02PartBSolver:
 
 
 def solve(input: str) -> int:
-    parser = Parser()
-    solver = Day02PartBSolver(parser.parse(input))
+    solver = Day02PartBSolver(Parser.parse(input))
 
     return solver.solution
 
