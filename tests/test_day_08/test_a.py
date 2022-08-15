@@ -14,10 +14,10 @@ SAMPLE_DATA = """
 @pytest.mark.parametrize(
     "input, expected",
     [
-        ('""', 2),
-        ('"abc"', 5),
-        ('"aaa\\"aaa"', 10),
-        ('"\\x27"', 6),
+        ('""', 0),
+        ('"abc"', 3),
+        ('"aaa\\"aaa"', 7),
+        ('"\\x27"', 1),
     ],
 )
 def test_representation_count(input: str, expected: int):
@@ -31,6 +31,5 @@ def test_solve():
     assert solver.solution == 12
 
 
-@pytest.mark.skip
 def test_my_solution():
-    assert get_solution() == "NOT THIS"
+    assert get_solution() == 1333
