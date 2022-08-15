@@ -6,14 +6,14 @@ from advent_of_code_2015_python.day_09.shared import Segment, Solver
 
 
 @dataclass
-class Day09PartASolver(Solver):
+class Day09PartBSolver(Solver):
     segments: Sequence[Segment]
-    is_better: Callable[[int, int], bool] = lambda a, b: a < b
+    is_better: Callable[[int, int], bool] = lambda a, b: a > b
 
 
 def solve(input: str) -> int:
     data = Parser.parse(input)
-    solver = Day09PartASolver(data)
+    solver = Day09PartBSolver(data)
 
     return solver.solution
 
