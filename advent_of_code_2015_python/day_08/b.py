@@ -5,7 +5,7 @@ from advent_of_code_2015_python.day_08.parser import Parser
 
 
 @dataclass
-class Day08PartASolver:
+class Day08PartBSolver:
     lines: Sequence[str]
 
     @property
@@ -13,22 +13,20 @@ class Day08PartASolver:
         return sum([self.get_line_difference(line) for line in self.lines])
 
     def get_line_difference(self, line) -> int:
-        return len(line) - self.get_respresentation_count(line)
+        return self.get_respresentation_count(line) - len(line)
 
     def get_respresentation_count(self, line: str) -> int:
         length = len(line)
-        count = 0
+        count = 2
         index = 0
         while index < length:
             match line[index]:
                 case '"':
+                    count += 2
                     index += 1
                 case "\\":
-                    count += 1
-                    if line[index + 1] == "x":
-                        index += 4
-                    else:
-                        index += 2
+                    count += 2
+                    index += 1
                 case _:
                     count += 1
                     index += 1
@@ -36,7 +34,8 @@ class Day08PartASolver:
 
 
 def solve(input: str) -> int:
-    solver = Day08PartASolver(Parser.parse(input))
+    data = Parser.parse(input)
+    solver = Day08PartBSolver(data)
 
     return solver.solution
 
