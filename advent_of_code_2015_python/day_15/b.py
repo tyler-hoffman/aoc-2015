@@ -1,79 +1,42 @@
-from dataclasses import dataclass
-from typing import Iterable, Mapping, Sequence
+from typing import Iterable, Mapping
 
 from advent_of_code_2015_python.day_15.parser import Parser
-from advent_of_code_2015_python.day_15.shared import Ingredient
+from advent_of_code_2015_python.day_15.shared import Day15Solver, Ingredient, Recipe
+
+TOTAL_CALORIES = 500
 
 
-@dataclass(frozen=True)
-class Day15PartBSolver:
-    data: Sequence[Ingredient]
-    teaspoons: int = 100
-    total_calories: int = 500
+def build_recipes(
+    so_far: Mapping[Ingredient, int],
+    ingredients_left: list[Ingredient],
+    amount_left: int,
+) -> Iterable[Mapping[Ingredient, int]]:
+    calories_so_far = count_calories(so_far)
+    ingredient = ingredients_left[0]
+    if len(ingredients_left) == 1:
+        if amount_left * ingredient.calories + calories_so_far == TOTAL_CALORIES:
+            yield so_far | {ingredient: amount_left}
+    else:
+        for count in range(amount_left + 1):
+            if count * ingredient.calories + calories_so_far > TOTAL_CALORIES:
+                break
+            yield from build_recipes(
+                so_far={ingredient: count} | so_far,
+                ingredients_left=ingredients_left[1:],
+                amount_left=amount_left - count,
+            )
 
-    @property
-    def solution(self) -> int:
-        best_so_far = 0
-        for recipe in self.get_recipes():
-            recipe_score = self.compute_score(recipe)
-            best_so_far = max(best_so_far, recipe_score)
 
-        return best_so_far
-
-    def compute_score(self, recipe: Mapping[Ingredient, int]) -> int:
-        capacity = 0
-        durability = 0
-        texture = 0
-        flavor = 0
-
-        for ingredient, count in recipe.items():
-            capacity += ingredient.capacity * count
-            durability += ingredient.durability * count
-            texture += ingredient.texture * count
-            flavor += ingredient.flavor * count
-        capacity = max(0, capacity)
-        durability = max(0, durability)
-        texture = max(0, texture)
-        flavor = max(0, flavor)
-
-        return capacity * durability * texture * flavor
-
-    def get_recipes(self) -> Iterable[Mapping[Ingredient, int]]:
-        yield from self._get_ingredient_amounts({}, list(self.data), self.teaspoons)
-
-    def _get_ingredient_amounts(
-        self,
-        so_far: Mapping[Ingredient, int],
-        ingredients_left: list[Ingredient],
-        amount_left: int,
-    ) -> Iterable[Mapping[Ingredient, int]]:
-        calories_so_far = self.count_calories(so_far)
-        ingredient = ingredients_left[0]
-        if len(ingredients_left) == 1:
-            if (
-                amount_left * ingredient.calories + calories_so_far
-                == self.total_calories
-            ):
-                yield so_far | {ingredient: amount_left}
-        else:
-            for count in range(amount_left + 1):
-                if count * ingredient.calories + calories_so_far > self.total_calories:
-                    break
-                yield from self._get_ingredient_amounts(
-                    so_far={ingredient: count} | so_far,
-                    ingredients_left=ingredients_left[1:],
-                    amount_left=amount_left - count,
-                )
-
-    def count_calories(self, recipe: Mapping[Ingredient, int]) -> int:
-        return sum(
-            [ingredient.calories * count for ingredient, count in recipe.items()]
-        )
+def count_calories(recipe: Recipe) -> int:
+    return sum([ingredient.calories * count for ingredient, count in recipe.items()])
 
 
 def solve(input: str) -> int:
     data = Parser.parse(input)
-    solver = Day15PartBSolver(data)
+    solver = Day15Solver(
+        data=data,
+        build_recipes=build_recipes,
+    )
 
     return solver.solution
 
