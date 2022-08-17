@@ -1,5 +1,6 @@
+import json
 import re
-from typing import Sequence
+from typing import Sequence, Union
 
 
 class Parser(object):
@@ -16,3 +17,8 @@ class Parser(object):
         ints = Parser.int_regex_pattern.findall(cleaned)
 
         return [int(x) for x in ints]
+
+    @staticmethod
+    def parse_json(input: str) -> Union[dict, list]:
+        cleaned = Parser.parse(input)
+        return json.loads(cleaned)
