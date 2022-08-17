@@ -83,7 +83,6 @@ class Password:
                 output.append(i)
         return output
 
-
     @cached_property
     def prohibited_chars(self) -> frozenset[str]:
         return frozenset(["i", "o", "l"])
