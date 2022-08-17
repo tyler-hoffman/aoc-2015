@@ -2,7 +2,8 @@ from dataclasses import dataclass
 from typing import Callable, Iterable, Mapping, Sequence, Tuple
 
 from advent_of_code_2015_python.day_05.parser import Parser
-from advent_of_code_2015_python.day_05.solver import Solver, sliding_window
+from advent_of_code_2015_python.day_05.solver import Solver
+from advent_of_code_2015_python.shared.functions import sliding_window
 
 
 @dataclass
