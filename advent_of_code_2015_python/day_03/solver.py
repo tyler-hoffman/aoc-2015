@@ -1,9 +1,8 @@
-from abc import ABC, abstractmethod, abstractproperty
-from dataclasses import dataclass
+from abc import ABC, abstractmethod
 from functools import cached_property
 from typing import Sequence
 
-from shared.models import DOWN, LEFT, RIGHT, UP, Point
+from advent_of_code_2015_python.shared.models import DOWN, LEFT, RIGHT, UP, Point
 
 
 class Solver(ABC):

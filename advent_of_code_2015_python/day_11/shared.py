@@ -3,7 +3,9 @@ from __future__ import annotations
 import string
 from dataclasses import dataclass
 from functools import cached_property
-from typing import Iterable, Mapping, Optional, Sequence, TypeVar
+from typing import Mapping, Optional, Sequence
+
+from advent_of_code_2015_python.shared.functions import sliding_window
 
 LETTER_TO_INDEX_MAP: Mapping[str, int] = {
     char: index for index, char in enumerate(string.ascii_lowercase)
@@ -94,11 +96,3 @@ class Password:
     @cached_property
     def as_ints(self) -> Sequence[int]:
         return [LETTER_TO_INDEX_MAP[char] for char in self.value]
-
-
-_T = TypeVar("_T")
-
-
-def sliding_window(items: Sequence[_T], count: int) -> Iterable[tuple[_T, ...]]:
-    for i in range(len(items) - (count - 1)):
-        yield tuple((items[i + j] for j in range(count)))

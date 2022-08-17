@@ -2,7 +2,7 @@ from dataclasses import dataclass, field
 
 from advent_of_code_2015_python.day_03.parser import Parser
 from advent_of_code_2015_python.day_03.solver import Solver
-from shared.models import Point
+from advent_of_code_2015_python.shared.models import Point
 
 
 @dataclass
