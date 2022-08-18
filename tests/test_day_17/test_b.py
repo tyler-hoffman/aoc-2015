@@ -9,6 +9,5 @@ def test_solve():
     assert Day17PartBSolver(containers, total_amount).solution == 3
 
 
-@pytest.mark.skip
 def test_my_solution():
-    assert get_solution() == "NOT THIS"
+    assert get_solution() == 57
