@@ -1,13 +1,13 @@
 from dataclasses import replace
 from typing import Optional
 
-from advent_of_code_2015_python.day_19.shared import Replacement
+from advent_of_code_2015_python.day_19.shared import StrReplacement
 
 
 class Parser(object):
     @staticmethod
-    def parse(input: str) -> tuple[str, set[Replacement]]:
-        replacements: set[Replacement] = set()
+    def parse(input: str) -> tuple[str, set[StrReplacement]]:
+        replacements: set[StrReplacement] = set()
         molecule: Optional[str]
         checking_replacements = True
         lines = input.strip().splitlines()
@@ -17,7 +17,7 @@ class Parser(object):
                 checking_replacements = False
             elif checking_replacements:
                 original, replacement = line.split(" => ")
-                replacements.add(Replacement(original, replacement))
+                replacements.add(StrReplacement(original, replacement))
             else:
                 molecule = line
 

@@ -1,13 +1,13 @@
 from dataclasses import dataclass
 
 from advent_of_code_2015_python.day_19.parser import Parser
-from advent_of_code_2015_python.day_19.shared import Replacement
+from advent_of_code_2015_python.day_19.shared import StrReplacement
 
 
 @dataclass
 class Day19PartASolver:
     molecule: str
-    replacements: set[Replacement]
+    replacements: set[StrReplacement]
 
     @property
     def solution(self) -> int:
