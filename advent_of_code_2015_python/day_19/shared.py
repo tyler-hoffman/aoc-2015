@@ -1,7 +1,7 @@
 from __future__ import annotations
+
 from dataclasses import dataclass, field
 from typing import Generic, Iterable, Optional, TypeVar
-
 
 _T = TypeVar("_T")
 _U = TypeVar("_U")

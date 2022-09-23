@@ -2,7 +2,6 @@ from dataclasses import dataclass
 from functools import cache, cached_property
 from typing import Optional
 
-
 from advent_of_code_2015_python.day_19.parser import Parser
 from advent_of_code_2015_python.day_19.shared import Replacement, StrReplacement
 
@@ -42,6 +41,7 @@ class Day19PartBSolver:
     The results seem much better doing this than when
     I arbitrarily guessed a max depth.
     """
+
     molecule: str
     replacements: frozenset[StrReplacement]
 
