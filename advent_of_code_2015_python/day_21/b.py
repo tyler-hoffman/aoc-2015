@@ -4,16 +4,18 @@ from advent_of_code_2015_python.day_21.parser import Parser
 from advent_of_code_2015_python.day_21.shared import Day21Solver
 
 
-class Day21PartASolver(Day21Solver):
+class Day21PartBSolver(Day21Solver):
     @property
     def solution(self) -> int:
-        lowest: Optional[int] = None
+        highest: Optional[int] = None
         for gear in self.get_combinations():
-            if self.can_win(gear) and (lowest is None or gear.total_cost < lowest):
-                lowest = gear.total_cost
+            if not self.can_win(gear) and (
+                highest is None or gear.total_cost > highest
+            ):
+                highest = gear.total_cost
 
-        assert lowest is not None
-        return lowest
+        assert highest is not None
+        return highest
 
 
 def solve(input: str) -> int:
@@ -22,7 +24,7 @@ def solve(input: str) -> int:
         shop_data = f.read()
     enemy = Parser.parse_enemy(input)
     shop = Parser.parse_shop(shop_data)
-    solver = Day21PartASolver(enemy=enemy, shop=shop)
+    solver = Day21PartBSolver(enemy=enemy, shop=shop)
     return solver.solution
 
 
