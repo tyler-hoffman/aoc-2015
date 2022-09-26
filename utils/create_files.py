@@ -22,7 +22,7 @@ def create_directories_if_needed(file_data: FileData) -> None:
     if not os.path.isdir(file_data.directory):
         os.makedirs(file_data.directory)
         touch_file(file_data.src_init_file)
-        write_file(file_data.input_file, aocd.get_data(year=2015, day=file_data.day))
+        # write_file(file_data.input_file, aocd.get_data(year=2015, day=file_data.day))
         write_file(file_data.parser_file, create_parser_stub())
 
     if not os.path.isdir(file_data.test_directory):
