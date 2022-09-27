@@ -48,8 +48,7 @@ class JumpIfOne(Instruction):
 class Computer:
     instructions: list[Instruction]
     registers: dict[Register, int] = field(
-        init=False,
-        default_factory=lambda: {r: 0 for r in {Register.A, Register.B}},
+        default_factory=lambda: {r: 0 for r in {Register.A, Register.B}}
     )
     index: int = field(init=False, default=0)
 
