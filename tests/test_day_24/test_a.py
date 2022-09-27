@@ -2,7 +2,6 @@ import pytest
 
 from advent_of_code_2015_python.day_24.a import get_solution, solve
 
-
 SAMPLE = """
 1
 2
