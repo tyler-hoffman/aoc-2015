@@ -4,7 +4,7 @@ from advent_of_code_2015_python.day_24.shared import Day24Solver
 
 def solve(input: str) -> int:
     values = Parser.parse(input)
-    solver = Day24Solver(values, 3)
+    solver = Day24Solver(values, 4)
 
     return solver.solution
 
