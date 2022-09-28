@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+
 from advent_of_code_2015_python.day_25.parser import Parser
 
 
@@ -9,7 +10,16 @@ class Day25PartASolver:
 
     @property
     def solution(self) -> int:
-        return -1
+        max_index = self.position_to_index(self.row, self.col)
+        value = 20151125
+        m = 252533
+        d = 33554393
+
+        for _ in range(1, max_index):
+            value *= m
+            value %= d
+
+        return value
 
     @staticmethod
     def position_to_index(row: int, col: int) -> int:
