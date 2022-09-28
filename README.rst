@@ -14,8 +14,8 @@ Notes on the repo
 * Utils in the ``utils/`` directory can/should be used to bootstrap new directories/files for solutions
 * Some parts of this repo are specific to the problems I receive (e.g. this won't entirely scale for non-me people)
 
-    * utils in the ``utils/`` derectory require `advent-of-code-data <https://github.com/wimglenn/advent-of-code-data>`_, which relies on my session cookie. So don't use those unless you are me.
-    * To make refactoring safer, after completing a problem, a test will be added asserting that my input produces the right output. If you aren't me, your input/output probably don't match.
+  * utils in the ``utils/`` derectory require `advent-of-code-data <https://github.com/wimglenn/advent-of-code-data>`_, which relies on my session cookie. So don't use those unless you are me.
+  * To make refactoring safer, after completing a problem, a test will be added asserting that my input produces the right output. If you aren't me, your input/output probably don't match.
 
 Getting started
 ===============
@@ -36,9 +36,9 @@ Commands to run
 +---------------------------------+-------------------------------------------------------------------------------------------------------------------+
 | Format code                     | ``poetry run black . --target-version py310``                                                                     |
 +---------------------------------+-------------------------------------------------------------------------------------------------------------------+
-| Sort imports                    | ``poetry run isort .                                                                                              |
+| Sort imports                    | ``poetry run isort .``                                                                                            |
 +---------------------------------+-------------------------------------------------------------------------------------------------------------------+
-| Typecheck                       | ``poetry run mypy .                                                                                               |
+| Typecheck                       | ``poetry run mypy .``                                                                                             |
 +---------------------------------+-------------------------------------------------------------------------------------------------------------------+
 | Run solution file               | ``poetry run python -m advent_of_code_2015_python.day_<DAY>.<PART>`` (where ``DAY`` has a leading zero if needed) |
 +---------------------------------+-------------------------------------------------------------------------------------------------------------------+
